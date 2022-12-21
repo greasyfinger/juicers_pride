@@ -25,11 +25,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.juicerspride.game.utils.bullets;
 import com.juicerspride.staticGUI.staticGUI;
 
 import java.io.IOException;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import static com.juicerspride.game.utils.Constants.PPM;
 public class JuicersPride extends ApplicationAdapter implements Serializable, Screen {
@@ -57,6 +59,7 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 	private Music ingame_music;
 	private Screen popup;
 	private Sound click;
+	ArrayList<bullets> bulletsArrayList;
 
 	public JuicersPride(staticGUI gui) {
 
@@ -72,6 +75,7 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 	public void create (){
 //		batch = new SpriteBatch();
 //		img = new Texture("badlogic.jpg");
+		bulletsArrayList = new ArrayList<bullets>();
 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
@@ -108,6 +112,9 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 		tmr.render();
 
 		batch.begin();
+		for (bullets bullet: bulletsArrayList){
+			bullet.render(batch);
+		}
 		batch.draw(tex, player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2);
 		batch.end();
 		b2dr.render(world, camera.combined.scl(PPM));
@@ -201,6 +208,25 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
 			player1.applyForceToCenter(0, -300, false);
 		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+//			Vector2 mousePosition = new Vector2();
+//			mousePosition.x = Gdx.input.getX();
+//			mousePosition.y = Gdx.input.getY();
+//
+//			int power = 10;
+			bulletsArrayList.add(new bullets(player1, new Vector2(player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2), new Vector2(10,10)));
+
+//			createBullet(mousePosition, power, player1.getPosition());
+		}
+
+		ArrayList<bullets> toRemove = new ArrayList<bullets>();
+		for (bullets bullet: bulletsArrayList){
+			bullet.update(delta);
+			if(bullet.remove) {
+				toRemove.add(bullet);
+			}
+		}
+		for(bullets bullet: toRemove) bulletsArrayList.remove(bullet);
 
 		player1.setLinearVelocity(horizontalForce * 5, player1.getLinearVelocity().y);
 
