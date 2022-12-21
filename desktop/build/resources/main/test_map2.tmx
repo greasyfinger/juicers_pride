@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="50" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="3">
+ <tileset firstgid="1" name="tileset_16x16_final_1" tilewidth="16" tileheight="16" tilecount="323" columns="17">
+  <image source="tileset_16x16_final_1.png" width="272" height="304"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="50" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzzEKADAIQ9Ec18N5yO4ORUGo0j+8RZAkJskAAADwPQ9e9+nY4Jd7VTYv+1vZMM32/sBUBy8Y4gQ=
+  </data>
+ </layer>
+ <layer id="3" name="greens" width="50" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAeLCKkgBGIgJiZkQRDaQgWodHEAkGg+4WAWIQRt15SxWkBsNmFLGYM9YcZI2411LSbVkCIAeIPMRL00MN9pKYBbP6glTvxmUtuvoCpJyY+iDWbnukIHZCTrgYjGPUH+aAIiIupbOZA+KMZiFug7DIgLqfQPFCVIQzEKkCGKZBWp9A8YsEUIJ4KZbcDcQeF5oHiAuYPEE0vfywF4mVQ9gwgnkmhecoM9PXHOTQMAiuBeBUReo8gYXRgwoDqDwskuS14zCIVgMw6h0Uc3V/kYlcgdoP6wwNIe5KglxRAqnpSASXuw6V+CxFqBiOgVpyNglFALQAAcetJtw==
+  </data>
+ </layer>
+ <objectgroup id="2" name="collision-layer">
+  <object id="2" x="0.551" y="223.832">
+   <polyline points="0,0 286.853,0 286.853,15.9363 367.258,16.6606 367.983,0.724375 527.03,0.227727 527.319,15.8396 559.41,16.1287 559.699,31.7406 671.006,32.3189 671.295,16.4178 703.097,16.1287 703.097,15.8396 703.097,0.516836 718.998,-0.0613821 719.288,-16.2515 735.478,-15.9624 735.478,-31.2852 799.082,-31.8634 799.371,-223.543"/>
+  </object>
+ </objectgroup>
+</map>
