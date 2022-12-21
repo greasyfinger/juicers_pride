@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/neeraj/Desktop/Al/Java/JuicersPride</OriginalElement>
+  <nodes>
+    <node x="1528.25" y="2466.0">com.juicerspride.game.DesktopLauncher</node>
+    <node x="2175.3333333333335" y="449.0">com.badlogic.gdx.Screen</node>
+    <node x="1499.5" y="460.5">com.badlogic.gdx.ApplicationListener</node>
+    <node x="1168.5" y="425.5">com.badlogic.gdx.graphics.OrthographicCamera</node>
+    <node x="3093.1666666666665" y="2172.5">java.io.Serializable</node>
+    <node x="3545.3333333333335" y="-575.0">com.badlogic.gdx.physics.box2d.World</node>
+    <node x="2139.0" y="2385.0">com.badlogic.gdx.Game</node>
+    <node x="2620.8333333333335" y="-874.0">com.badlogic.gdx.physics.box2d.Body</node>
+    <node x="299.5" y="471.5">com.badlogic.gdx.maps.tiled.TiledMap</node>
+    <node x="2381.3333333333335" y="380.0">com.badlogic.gdx.physics.box2d.BodyDef</node>
+    <node x="3365.8333333333335" y="518.0">com.badlogic.gdx.physics.box2d.Box2D</node>
+    <node x="2055.0" y="2050.5">com.juicerspride.game.utils.bullets</node>
+    <node x="1622.5" y="2074.0">com.juicerspride.game.utils.Constants</node>
+    <node x="701.0" y="-207.0">com.badlogic.gdx.graphics.g2d.SpriteBatch</node>
+    <node x="3119.8333333333335" y="460.5">com.badlogic.gdx.ApplicationAdapter</node>
+    <node x="2854.1666666666665" y="2362.0">com.juicerspride.game.utils.tank</node>
+    <node x="3395.2805453637347" y="2210.0351740917013">com.juicerspride.game.utils.atomic</node>
+    <node x="1092.25" y="2431.5">com.juicerspride.game.utils.TiledObjectUtil</node>
+    <node x="3026.6666666666665" y="2087.0">com.juicerspride.game.utils.NoLoadFileFoundException</node>
+    <node x="-152.5" y="310.5">com.badlogic.gdx.graphics.Texture</node>
+    <node x="1758.25" y="2247.0">com.juicerspride.game.JuicersPride</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.juicerspride.game.utils.tank" target="com.badlogic.gdx.physics.box2d.World" relationship="DEPENDENCY">
+      <point x="-94.5" y="-131.5" />
+      <point x="2885.6666666666665" y="2217.0" />
+      <point x="1775.5" y="2217.0" />
+      <point x="1775.5" y="2010.5" />
+      <point x="3780.3333333333335" y="2010.5" />
+      <point x="0.0" y="1120.5" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.tank" target="com.badlogic.gdx.physics.box2d.Body" relationship="GENERALIZATION">
+      <point x="31.5" y="-131.5" />
+      <point x="156.33333333333331" y="1419.5" />
+    </edge>
+    <edge source="com.juicerspride.game.JuicersPride" target="com.badlogic.gdx.physics.box2d.World" relationship="TO_ONE">
+      <point x="80.25" y="-246.5" />
+      <point x="1999.0" y="2197.0" />
+      <point x="2040.0" y="2197.0" />
+      <point x="2040.0" y="2030.5" />
+      <point x="3937.0" y="2030.5" />
+      <point x="156.66666666666669" y="1120.5" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.atomic" target="com.juicerspride.game.utils.tank" relationship="GENERALIZATION">
+      <point x="0.0" y="97.5" />
+      <point x="3490.7805453637347" y="2493.5" />
+      <point x="126.0" y="0.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.physics.box2d.World" target="com.badlogic.gdx.physics.box2d.Body" relationship="CREATE">
+      <point x="58.75" y="-1120.5" />
+      <point x="3839.0833333333335" y="-904.0" />
+      <point x="2699.0" y="-904.0" />
+      <point x="-156.33333333333331" y="-1419.5" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.tank" target="java.io.Serializable" relationship="REALIZATION">
+      <point x="94.5" y="-131.5" />
+      <point x="3074.6666666666665" y="2352.0" />
+      <point x="3166.6666666666665" y="2352.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.ApplicationAdapter" target="com.badlogic.gdx.ApplicationListener" relationship="REALIZATION">
+      <point x="0.0" y="-85.0" />
+      <point x="3227.8333333333335" y="-914.0" />
+      <point x="1607.5" y="-914.0" />
+      <point x="0.0" y="-85.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.Screen" target="com.badlogic.gdx.ApplicationListener" relationship="LINK_IN_DOCS">
+      <point x="-88.0" y="-0.0" />
+      <point x="108.0" y="-0.0" />
+    </edge>
+    <edge source="com.juicerspride.game.JuicersPride" target="com.badlogic.gdx.maps.tiled.TiledMap" relationship="TO_ONE">
+      <point x="80.25" y="-246.5" />
+      <point x="1999.0" y="2197.0" />
+      <point x="1817.5" y="2197.0" />
+      <point x="1817.5" y="2064.0" />
+      <point x="480.0" y="2064.0" />
+      <point x="0.0" y="74.0" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.tank" target="com.badlogic.gdx.graphics.Texture" relationship="TO_ONE">
+      <point x="-31.5" y="-131.5" />
+      <point x="2948.6666666666665" y="2352.0" />
+      <point x="2140.0" y="2352.0" />
+      <point x="2140.0" y="2207.0" />
+      <point x="164.0" y="2207.0" />
+      <point x="105.5" y="235.0" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.NoLoadFileFoundException" target="java.io.Serializable" relationship="REALIZATION">
+      <point x="0.0" y="14.5" />
+      <point x="0.0" y="-14.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.graphics.OrthographicCamera" target="com.badlogic.gdx.graphics.OrthographicCamera" relationship="DEPENDENCY">
+      <point x="-150.5" y="-0.0" />
+      <point x="1158.0" y="545.5" />
+      <point x="1158.0" y="681.0" />
+      <point x="1243.75" y="681.0" />
+      <point x="-75.25" y="120.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.graphics.g2d.SpriteBatch" target="com.badlogic.gdx.graphics.Texture" relationship="TO_ONE">
+      <point x="0.0" y="-752.5" />
+      <point x="914.5" y="-217.0" />
+      <point x="58.5" y="-217.0" />
+      <point x="0.0" y="-235.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.physics.box2d.World" target="com.badlogic.gdx.physics.box2d.BodyDef" relationship="DEPENDENCY">
+      <point x="176.25" y="-1120.5" />
+      <point x="3956.583333333334" y="-924.0" />
+      <point x="2480.8333333333335" y="-924.0" />
+      <point x="0.0" y="-165.5" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.tank" target="com.juicerspride.game.utils.bullets" relationship="TO_MANY">
+      <point x="-31.5" y="-131.5" />
+      <point x="2948.6666666666665" y="2352.0" />
+      <point x="2140.0" y="2352.0" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.graphics.Texture" target="com.badlogic.gdx.graphics.Texture" relationship="DEPENDENCY">
+      <point x="-211.0" y="-0.0" />
+      <point x="-163.0" y="545.5" />
+      <point x="-163.0" y="796.0" />
+      <point x="-47.0" y="796.0" />
+      <point x="-105.5" y="235.0" />
+    </edge>
+    <edge source="com.juicerspride.game.JuicersPride" target="com.badlogic.gdx.graphics.Texture" relationship="TO_ONE">
+      <point x="80.25" y="-246.5" />
+      <point x="1999.0" y="2044.0" />
+      <point x="164.0" y="2044.0" />
+      <point x="105.5" y="235.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.Game" target="com.badlogic.gdx.ApplicationListener" relationship="REALIZATION">
+      <point x="-67.33333333333334" y="-108.5" />
+      <point x="2172.6666666666665" y="2237.0" />
+      <point x="1607.5" y="2237.0" />
+      <point x="0.0" y="85.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.physics.box2d.Body" target="com.badlogic.gdx.physics.box2d.World" relationship="TO_ONE">
+      <point x="156.33333333333331" y="-1419.5" />
+      <point x="3011.666666666667" y="-884.0" />
+      <point x="3604.0833333333335" y="-884.0" />
+      <point x="-176.25" y="-1120.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.graphics.g2d.SpriteBatch" target="com.badlogic.gdx.graphics.g2d.SpriteBatch" relationship="DEPENDENCY">
+      <point x="-213.5" y="-0.0" />
+      <point x="690.5" y="545.5" />
+      <point x="690.5" y="1313.5" />
+      <point x="807.75" y="1313.5" />
+      <point x="-106.75" y="752.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.physics.box2d.Box2D" target="com.badlogic.gdx.physics.box2d.World" relationship="LINK_IN_DOCS">
+      <point x="57.0" y="-0.0" />
+      <point x="3504.8333333333335" y="545.5" />
+      <point x="3504.8333333333335" y="-14.75" />
+      <point x="-235.0" y="-560.25" />
+    </edge>
+    <edge source="com.juicerspride.game.JuicersPride" target="com.badlogic.gdx.graphics.OrthographicCamera" relationship="TO_ONE">
+      <point x="80.25" y="-246.5" />
+      <point x="1999.0" y="2197.0" />
+      <point x="1394.25" y="2197.0" />
+      <point x="75.25" y="120.0" />
+    </edge>
+    <edge source="com.juicerspride.game.JuicersPride" target="com.badlogic.gdx.ApplicationAdapter" relationship="GENERALIZATION">
+      <point x="-80.25" y="-246.5" />
+      <point x="1838.5" y="2000.5" />
+      <point x="3227.8333333333335" y="2000.5" />
+      <point x="0.0" y="85.0" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.tank" target="com.badlogic.gdx.physics.box2d.BodyDef" relationship="TO_ONE">
+      <point x="-31.5" y="-131.5" />
+      <point x="2948.6666666666665" y="2352.0" />
+      <point x="2140.0" y="2352.0" />
+      <point x="2140.0" y="2207.0" />
+      <point x="2480.8333333333335" y="2207.0" />
+      <point x="0.0" y="165.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.physics.box2d.World" target="com.badlogic.gdx.physics.box2d.Body" relationship="TO_MANY">
+      <point x="-58.75" y="-1120.5" />
+      <point x="3721.5833333333335" y="-894.0" />
+      <point x="2855.3333333333335" y="-894.0" />
+      <point x="0.0" y="-1419.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.physics.box2d.World" target="com.badlogic.gdx.physics.box2d.World" relationship="DEPENDENCY">
+      <point x="-235.0" y="560.25" />
+      <point x="3534.8333333333335" y="1105.75" />
+      <point x="3534.8333333333335" y="1681.5" />
+      <point x="3623.666666666667" y="1681.5" />
+      <point x="-156.66666666666669" y="1120.5" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.atomic" target="com.juicerspride.game.utils.atomic" relationship="DEPENDENCY">
+      <point x="0.0" y="-97.5" />
+      <point x="3490.7805453637347" y="1724.5" />
+      <point x="3638.666666666667" y="1724.5" />
+      <point x="3638.666666666667" y="2307.5351740917013" />
+      <point x="95.5" y="0.0" />
+    </edge>
+    <edge source="com.badlogic.gdx.physics.box2d.Body" target="com.badlogic.gdx.physics.box2d.Body" relationship="DEPENDENCY">
+      <point x="-234.5" y="-0.0" />
+      <point x="2610.3333333333335" y="545.5" />
+      <point x="2610.3333333333335" y="1980.5" />
+      <point x="2699.0" y="1980.5" />
+      <point x="-156.33333333333331" y="1419.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.Game" target="com.badlogic.gdx.Screen" relationship="TO_ONE">
+      <point x="67.33333333333334" y="-108.5" />
+      <point x="44.0" y="96.5" />
+    </edge>
+    <edge source="com.juicerspride.game.JuicersPride" target="com.badlogic.gdx.physics.box2d.Body" relationship="TO_ONE">
+      <point x="80.25" y="-246.5" />
+      <point x="1999.0" y="2197.0" />
+      <point x="2019.0" y="2197.0" />
+      <point x="2019.0" y="2020.5" />
+      <point x="2855.3333333333335" y="2020.5" />
+      <point x="0.0" y="1419.5" />
+    </edge>
+    <edge source="com.badlogic.gdx.Screen" target="com.badlogic.gdx.Game" relationship="LINK_IN_DOCS">
+      <point x="-44.0" y="96.5" />
+      <point x="2219.3333333333335" y="2040.5" />
+      <point x="2240.0" y="2040.5" />
+      <point x="0.0" y="-108.5" />
+    </edge>
+    <edge source="com.juicerspride.game.JuicersPride" target="com.badlogic.gdx.graphics.g2d.SpriteBatch" relationship="TO_ONE">
+      <point x="80.25" y="-246.5" />
+      <point x="1999.0" y="2197.0" />
+      <point x="1796.5" y="2197.0" />
+      <point x="1796.5" y="2054.0" />
+      <point x="1021.25" y="2054.0" />
+      <point x="106.75" y="752.5" />
+    </edge>
+    <edge source="com.juicerspride.game.utils.atomic" target="com.badlogic.gdx.physics.box2d.World" relationship="DEPENDENCY">
+      <point x="95.5" y="15.0" />
+      <point x="3765.3333333333335" y="2322.5351740917013" />
+      <point x="-15.0" y="1120.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6460721494994975" showDependencies="true" x="2194.768690550649" y="2460.387476787935" />
+  <SelectedNodes>
+    <node>com.juicerspride.game.JuicersPride</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
