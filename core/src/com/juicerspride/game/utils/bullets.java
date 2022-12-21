@@ -1,21 +1,38 @@
 package com.juicerspride.game.utils;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 
-abstract class bullets {
+public class bullets {
     private int damage;
+    private static Texture texture;
+    public boolean remove = false;
     public Vector2 position = new Vector2();
     public Vector2 direction = new Vector2();
 
-    public bullets(Vector2 pos, Vector2 dir){
+    Body player;
+
+    public bullets(Body player, Vector2 pos, Vector2 dir){
+        this.player = player;
         this.position.set(pos);
         this.direction.set(dir);
+
+        if (texture == null){
+            texture = new Texture("bullet.png");
+        }
     }
 
     public void update(float delta){
-        float speed = 16.0f;
-        position.add(direction.x * delta * speed, direction.y*delta*speed);
+        float speed = 100.0f;
+        this.position.add(direction.x * delta * speed,  direction.y*delta*speed);
+        this.direction.sub(0, 0.98f);
+//        this.position.
 
+    }
+    public void render(SpriteBatch sprite){
+        sprite.draw(texture, this.position.x, this.position.y);
     }
 
     public boolean didHit(tank tank){
@@ -31,24 +48,24 @@ abstract class bullets {
     }
 }
 
-class bigone extends bullets{
-    public bigone(Vector2 pos, Vector2 dir) {
-        super(pos, dir);
-    }
+//class bigone extends bullets{
+//    public bigone(Vector2 pos, Vector2 dir) {
+//        super(pos, dir);
+//    }
+//
+//    public void hitTank(tank Tank){
+//
+//    }
+//}
 
-    public void hitTank(tank Tank){
-
-    }
-}
-
-class rain extends  bullets{
-
-
-    public rain(Vector2 pos, Vector2 dir) {
-        super(pos, dir);
-    }
-
-    public void hitTank(tank Tank){
-
-    }
-}
+//class rain extends  bullets{
+//
+//
+//    public rain(Vector2 pos, Vector2 dir) {
+//        super(pos, dir);
+//    }
+//
+//    public void hitTank(tank Tank){
+//
+//    }
+//}
