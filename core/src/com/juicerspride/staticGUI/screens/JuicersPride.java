@@ -50,7 +50,7 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 	private World world;
 	private Body player1, player2, platform;
 	private SpriteBatch batch;
-	private Texture tex, tex2;
+	private Texture tex, tex2, blank, blank2;
 
 	private int id_game;
 	private final staticGUI gui;
@@ -97,6 +97,8 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 		batch = new SpriteBatch();
 		tex = new Texture("Mark_I copy.png");
 		tex2 = new Texture("Mark_I copy 2.png");
+		blank = new Texture("blank.png");
+		blank2 = new Texture("blank.png");
 		tank1 = new tank(player1, tex);
 		tank2 = new tank(player2, tex2);
 
@@ -126,6 +128,8 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 		batch.draw(tex, player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2);
 		batch.draw(tex2, player2.getPosition().x * PPM - tex2.getWidth()/2, player2.getPosition().y * PPM - tex2.getHeight()/2);
 
+		batch.draw(blank, player1.getPosition().x * PPM - tex.getWidth()/3+3, player1.getPosition().y * PPM - tex.getHeight()/2+40, tank1.health/3, 5);
+		batch.draw(blank2, player2.getPosition().x * PPM - tex2.getWidth()/3+3, player2.getPosition().y * PPM - tex2.getHeight()/2+40, tank2.health/3, 5);
 		batch.end();
 		b2dr.render(world, camera.combined.scl(PPM));
 	}
@@ -256,7 +260,7 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 				if(bullet.rect.collidesWith(tank2.rect)){
 	//				System.out.println("collision with tank 2");
 	//				player2.applyForceToCenter(0, 10, false);
-					tank2.health -=1;
+					tank2.health -=10;
 					System.out.println("Tank 2 health: ");
 					System.out.println(tank2.health);
 					toRemove.add(bullet);
@@ -313,7 +317,7 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 				if (bullet.rect.collidesWith(tank1.rect)){
 	////				System.out.println("Collision with tank 1");
 	//				player1.applyForceToCenter(0, 10, false);
-					tank1.health -=1;
+					tank1.health -=10;
 					System.out.println("Tank 1 health: ");
 					System.out.println(tank1.health);
 				}
