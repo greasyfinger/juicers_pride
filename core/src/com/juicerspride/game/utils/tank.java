@@ -4,39 +4,23 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
+import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class tank extends Body implements Serializable {
-    private String color;
-    private Texture tex;
-    private int hp;
-    private ArrayList<bullets> projectiles = new ArrayList<>();
-    private BodyDef bdef;
-    int ID;
-    tank(World world, long address, int ID){
-        super(world, address);
+import static com.juicerspride.game.utils.Constants.PPM;
 
+public class tank{
+    Body player;
+    public CollisionRect rect;
+    public int health = 100;
+
+    public tank(Body player, Texture tex){
+        this.player = player;
+        rect = new CollisionRect(player.getPosition().x * PPM - tex.getWidth()/2, player.getPosition().y * PPM - tex.getHeight()/2, tex.getHeight(), tex.getWidth());
     }
 
-    public void saveGame(){
-
-    }
-
-    public boolean isHit(){
-        boolean bool = true;
-
-        return bool;
-    }
-
-    private void updateHP(boolean isHit){
-
-    }
-
-    public void shoot(){
-
-    }
 
 }
 

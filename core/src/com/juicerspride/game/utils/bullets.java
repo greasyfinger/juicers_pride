@@ -13,11 +13,14 @@ public class bullets {
     public Vector2 direction = new Vector2();
 
     Body player;
+    public CollisionRect rect;
 
     public bullets(Body player, Vector2 pos, Vector2 dir){
         this.player = player;
         this.position.set(pos);
         this.direction.set(dir);
+
+        rect = new CollisionRect(pos.x, pos.y, 8,8);//8,8 bullet image specific
 
         if (texture == null){
             texture = new Texture("bullet.png");
@@ -28,6 +31,8 @@ public class bullets {
         float speed = 100.0f;
         this.position.add(direction.x * delta * speed,  direction.y*delta*speed);
         this.direction.sub(0, 0.98f);
+
+        rect.move(position.x, position.y);
 //        this.position.
 
     }
