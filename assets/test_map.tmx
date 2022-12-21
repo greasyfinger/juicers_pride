@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="6">
+ <tileset firstgid="1" name="tileset_16x16_final_1" tilewidth="16" tileheight="16" tilecount="323" columns="17">
+  <image source="../../../../../Downloads/tileset_16x16_final_1.png" width="272" height="304"/>
+ </tileset>
+ <objectgroup id="6" name="collision-layer">
+  <object id="5" x="-0.462321" y="224.688">
+   <polyline points="0,0 17.1059,-17.1059 48.0814,-32.8248 176.144,-32.8248 224.226,14.3319 256.588,0 306.056,-15.7189 448.914,-31.9001 479.889,-32.8248 480.351,-224.688 0,-224.226 2.3116,-18.4928"/>
+  </object>
+ </objectgroup>
+ <layer id="1" name="Tile Layer 1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhAWoGyN5eOthxjgDGBUgJE2SzYOwDBDAuu2FhQsiNyHYQYx8+u5HtIqSOFHtw2U1MGCGHJ6V2EsLzsNhNaztHMW4MAMfUmZU=
+  </data>
+ </layer>
+</map>
