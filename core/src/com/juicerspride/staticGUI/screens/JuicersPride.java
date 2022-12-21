@@ -26,6 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.juicerspride.game.utils.bullets;
+import com.juicerspride.game.utils.tank;
 import com.juicerspride.staticGUI.staticGUI;
 
 import java.io.IOException;
@@ -47,9 +48,9 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 	private TiledMap map;
 	private Box2DDebugRenderer b2dr;
 	private World world;
-	private Body player1, platform;
+	private Body player1, player2, platform;
 	private SpriteBatch batch;
-	private Texture tex;
+	private Texture tex, tex2;
 
 	private int id_game;
 	private final staticGUI gui;
@@ -60,6 +61,9 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 	private Screen popup;
 	private Sound click;
 	ArrayList<bullets> bulletsArrayList;
+	tank tank1, tank2;
+
+	boolean isOne = true;
 
 	public JuicersPride(staticGUI gui) {
 
@@ -87,10 +91,14 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 		b2dr = new Box2DDebugRenderer();
 
 		player1 = createBox(155,155,32,48,false);
+		player2 = createBox(355,155,32,48,false);
 		platform = createBox(145,65,64,32,true);
 
 		batch = new SpriteBatch();
 		tex = new Texture("Mark_I copy.png");
+		tex2 = new Texture("Mark_I copy 2.png");
+		tank1 = new tank(player1, tex);
+		tank2 = new tank(player2, tex2);
 
 		map = new TmxMapLoader().load("tex_map3.tmx");
 		tmr = new OrthogonalTiledMapRenderer(map);
@@ -116,6 +124,8 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 			bullet.render(batch);
 		}
 		batch.draw(tex, player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2);
+		batch.draw(tex2, player2.getPosition().x * PPM - tex2.getWidth()/2, player2.getPosition().y * PPM - tex2.getHeight()/2);
+
 		batch.end();
 		b2dr.render(world, camera.combined.scl(PPM));
 	}
@@ -189,14 +199,80 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 	}
 
 	private void inputUpdate(float delta){
-		int horizontalForce = 0;
+		if(isOne){
+			int horizontalForce = 0;
 
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			horizontalForce -= 1;
+			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+				horizontalForce -= 1;
+			}
+			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+				horizontalForce += 1;
+			}
+	//		if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+	//			player1.applyForceToCenter(0, 300, false);
+	////			code for projectile motion; remember to have a separate updation as this sends y - velocity to 0 every frame
+	////			Vector2 startingVelocity =new Vector2(10,10);
+	////			startingVelocity.rotateDeg((float) 60 - 45);
+	////
+	////			player1.setLinearVelocity(startingVelocity);
+	//		}
+			if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+				player1.applyForceToCenter(0, -300, false);
+			}
+			if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+	//			Vector2 mousePosition = new Vector2();
+	//			mousePosition.x = Gdx.input.getX();
+//			mousePosition.y = Gdx.input.getY();
+//
+//			int power = 10;
+			bulletsArrayList.add(new bullets(player1, new Vector2(player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2), new Vector2(10,5)));
+			isOne = false;
+//			createBullet(mousePosition, power, player1.getPosition());
+			}
+
+			ArrayList<bullets> toRemove = new ArrayList<bullets>();
+			for (bullets bullet: bulletsArrayList){
+				bullet.update(delta);
+				if(bullet.remove) {
+					toRemove.add(bullet);
+				}
+			}
+			for(bullets bullet: toRemove) bulletsArrayList.remove(bullet);
+
+			player1.setLinearVelocity(horizontalForce * 5, player1.getLinearVelocity().y);
+			tank1.rect.move(player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2);
+
+			tank2.rect.move(player2.getPosition().x * PPM - tex2.getWidth()/2, player2.getPosition().y * PPM - tex2.getHeight()/2);
+
+			for (bullets bullet: bulletsArrayList){
+	//			if (bullet.rect.collidesWith(tank1.rect)){
+	//////				System.out.println("Collision with tank 1");
+	////				player1.applyForceToCenter(0, 10, false);
+	//				tank1.health -=1;
+	//				System.out.println("Tank 1 health: ");
+	//				System.out.println(tank1.health);
+	//			}
+
+				if(bullet.rect.collidesWith(tank2.rect)){
+	//				System.out.println("collision with tank 2");
+	//				player2.applyForceToCenter(0, 10, false);
+					tank2.health -=1;
+					System.out.println("Tank 2 health: ");
+					System.out.println(tank2.health);
+					toRemove.add(bullet);
+
+				}
+			}
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-			horizontalForce += 1;
-		}
+		else{
+			int horizontalForce = 0;
+
+			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+				horizontalForce -= 1;
+			}
+			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+				horizontalForce += 1;
+			}
 //		if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
 //			player1.applyForceToCenter(0, 300, false);
 ////			code for projectile motion; remember to have a separate updation as this sends y - velocity to 0 every frame
@@ -205,36 +281,67 @@ public class JuicersPride extends ApplicationAdapter implements Serializable, Sc
 ////
 ////			player1.setLinearVelocity(startingVelocity);
 //		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-			player1.applyForceToCenter(0, -300, false);
-		}
-		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
+			if (Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+				player1.applyForceToCenter(0, -300, false);
+			}
+			if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
 //			Vector2 mousePosition = new Vector2();
 //			mousePosition.x = Gdx.input.getX();
 //			mousePosition.y = Gdx.input.getY();
 //
 //			int power = 10;
-			bulletsArrayList.add(new bullets(player1, new Vector2(player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2), new Vector2(10,10)));
-
+				bulletsArrayList.add(new bullets(player2, new Vector2(player2.getPosition().x * PPM - tex2.getWidth()/2, player2.getPosition().y * PPM - tex2.getHeight()/2), new Vector2(-10,5)));
+				isOne = true;
 //			createBullet(mousePosition, power, player1.getPosition());
-		}
+			}
 
-		ArrayList<bullets> toRemove = new ArrayList<bullets>();
-		for (bullets bullet: bulletsArrayList){
-			bullet.update(delta);
-			if(bullet.remove) {
-				toRemove.add(bullet);
+			ArrayList<bullets> toRemove = new ArrayList<bullets>();
+			for (bullets bullet: bulletsArrayList){
+				bullet.update(delta);
+				if(bullet.remove) {
+					toRemove.add(bullet);
+				}
+			}
+			for(bullets bullet: toRemove) bulletsArrayList.remove(bullet);
+
+			player2.setLinearVelocity(horizontalForce * 5, player1.getLinearVelocity().y);
+			tank1.rect.move(player1.getPosition().x * PPM - tex.getWidth()/2, player1.getPosition().y * PPM - tex.getHeight()/2);
+
+			tank2.rect.move(player2.getPosition().x * PPM - tex2.getWidth()/2, player2.getPosition().y * PPM - tex2.getHeight()/2);
+
+			for (bullets bullet: bulletsArrayList){
+				if (bullet.rect.collidesWith(tank1.rect)){
+	////				System.out.println("Collision with tank 1");
+	//				player1.applyForceToCenter(0, 10, false);
+					tank1.health -=1;
+					System.out.println("Tank 1 health: ");
+					System.out.println(tank1.health);
+				}
+
+//				if(bullet.rect.collidesWith(tank2.rect)){
+////				System.out.println("collision with tank 2");
+////				player2.applyForceToCenter(0, 10, false);
+//					tank2.health -=1;
+//					System.out.println("Tank 2 health: ");
+//					System.out.println(tank2.health);
+//					toRemove.add(bullet);
+//
+//				}
 			}
 		}
-		for(bullets bullet: toRemove) bulletsArrayList.remove(bullet);
-
-		player1.setLinearVelocity(horizontalForce * 5, player1.getLinearVelocity().y);
 
 	}
 	private void cameraUpdate(float delta){
 		Vector3 position = camera.position;
-		position.x = player1.getPosition().x * PPM; //when you get stuff, multiply; setting stuff divide
-		position.y = 5 * PPM;
+		if (isOne) {
+			position.x = player1.getPosition().x * PPM; //when you get stuff, multiply; setting stuff divide
+			position.y = 5 * PPM;
+		}
+		else{
+			position.x = player2.getPosition().x * PPM; //when you get stuff, multiply; setting stuff divide
+			position.y = 5 * PPM;
+		}
+
 
 		camera.position.set(position);
 		camera.update();
