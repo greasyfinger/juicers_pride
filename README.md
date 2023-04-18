@@ -7,6 +7,7 @@ LibGdx (scene2D and box2D).
 ## Authors
 
 - [@Alhad Sethi](https://github.com/Alhad-Sethi)
+- [@N Narotam](https://github.com/greasyfinger)
 
 
 ## Deployment
