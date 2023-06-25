@@ -29,8 +29,12 @@ com.juicerspride.staticGUI.DesktopLauncher
 ```
 ## Features
 
-baad mein daal dunga Alhad
-
+- Multilayer capabilities where each user can select one of the various tanks
+- Ability to pause and save the game to continue in future
+- In-game music and sounds on interactive elements
+- Intuitive controls for shooting and navigation
+- Various animations and effects improve user experience and accessibility of the game
+  
 ## Screenshots
 
 ![App Screenshot](https://github.com/greasyfinger/juicers_pride/blob/main/assets/lobbyscron.png?raw=true)
